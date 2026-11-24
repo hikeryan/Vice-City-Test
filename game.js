@@ -153,6 +153,17 @@ function setStatus(text) {
 };
 
 async function loadGame(data) {
+        const response = await fetch(
+        new URL("./main.scm", window.location.href)
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to load replacement mission script");
+    }
+
+    const missionScript = new Uint8Array(
+        await response.arrayBuffer()
+    );
     var Module = {
         mainCalled: () => {
             try {
