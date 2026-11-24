@@ -299,7 +299,22 @@ Module["expectedDataFileDownloads"]++;
         var byteArray = new Uint8Array(arrayBuffer);
         for (var file of metadata["files"]) {
           var name = file["filename"];
-          var data = byteArray.subarray(file["start"], file["end"]);
+         var data;
+
+if (file["filename"] === "/vc-assets/local/data/main.scm") {
+    const response = await fetch(
+        new URL("./main.scm", window.location.href)
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to load main.scm");
+    }
+
+    data = new Uint8Array(await response.arrayBuffer());
+    console.log("Modified mission script loaded:", data.length);
+} else {
+    data = byteArray.subarray(file["start"], file["end"]);
+}
           Module["FS_createDataFile"](name, null, data, true, true, true);
           Module["removeRunDependency"](`fp ${name}`);
         }
