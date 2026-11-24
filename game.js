@@ -229,7 +229,7 @@ async function loadGame(data) {
     window.Module = Module;
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'index.js';
+   script.src = new URL("./index.js?v=2", window.location.href).href;
     document.body.appendChild(script);
     document.body.classList.add('gameIsStarted');
 
