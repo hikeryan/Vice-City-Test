@@ -301,7 +301,7 @@ Module["expectedDataFileDownloads"]++;
           var name = file["filename"];
          var data;
 
-if (file["filename"] === "/vc-assets/local/data/main.scm") {
+if (false && file["filename"] === "/vc-assets/local/data/main.scm") {
     const response = await fetch(
         new URL("./main.scm", window.location.href)
     );
