@@ -451,7 +451,7 @@ const revc_ini = (() => {
         }
     };
 
-    setIniValue('General', 'NoMovies', '0');
+    setIniValue('General', 'NoMovies', '1');
     setIniValue('Audio', 'SfxVolume', '0');
     setIniValue('Audio', 'MusicVolume', '0');
     setIniValue('Audio', 'MP3BoostVolume', '0');
